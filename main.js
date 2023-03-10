@@ -56,12 +56,12 @@ const generateShop = () => {
     .map((item) => {
       return `
     <div id=${item.product_name} class="item">
-    <div class="popup-wrapper open" id="perviwePage">
-    <div class="popup-page">
-    <div class="image-container">
-    <img  src=${item.product_image} alt="">
-    </div>
-    <div class="item-data-container">
+      <div class="popup-wrapper open" id="perviwePage">
+        <div class="popup-page">
+          <div class="image-container">
+             <img  src=${item.product_image} alt="">
+          </div>
+         <div class="item-data-container">
     <h3>${item.product_name}</h3>
     <br>
     <p>
@@ -85,9 +85,9 @@ const generateShop = () => {
           <button class="btn" onClick={cartHandler(${item.product_name})}> 
           Add To Cart </button>
           <button class="btn" onClick={openModelHandler(${item.product_name})} > Show More </button>
+           </div>
         </div>
       </div>
-    </div>
     </div>
     `;
     })
@@ -97,7 +97,7 @@ const generateShop = () => {
 generateShop();
 
 const cartHandler = (productName) => {
-  let name = productName.id;
+  const name = productName.id;
 
   shopData.find((item) => {
     if (item.product_name === name && item.added_to_cart === false) {
@@ -144,7 +144,7 @@ const update = (selectedItem) => {
 };
 
 const openModelHandler = (product) => {
-  let name = product.id;
+  const name = product.id;
   const itemcard = document.getElementById(`${name}`);
   const popup = itemcard.getElementsByClassName('popup-wrapper')[0].classList;
   const slectedItem = shopData.find((item) => {
@@ -186,4 +186,5 @@ const cartItemsGenerator = () => {
       .join(''));
   }
 };
+
 cartItemsGenerator();
